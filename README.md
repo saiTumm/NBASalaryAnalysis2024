@@ -17,3 +17,10 @@ It is currently a work in progress.
     1. Created calculated fields in Tableau to better find a correlation between statistics and salary
     2. Visualized this correlation in various Tableau Sheets
     3. Created a dashboard for future display
+  
+5. Statistical Analaysis:
+    1. Trained 3 different machine learning models (Random Forest Regressor, Linear Regression, and KN Neighbors Regressor)
+    2. Averaged them to get an aggregated predicted salary value
+    3. Conducted a poll and garnered 50+ responses to get human sentiment on which salary seems correct
+    4. Compared statistical metrics among the 4 models (mse, rmse, mae, r2)
+    5. Visualized graphs of error, and variation between the actual and predicted salary measurement 
