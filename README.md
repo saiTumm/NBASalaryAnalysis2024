@@ -12,4 +12,8 @@ It is currently a work in progress.
     1. Merged all data sets to create a comprehensive data set
         1. See CombinedNBAStatsSalaries.xlsx
     2. Removed empty NaN values and inconsistencies
+  
 4. Preliminary Analysis:
+    1. Created calculated fields in Tableau to better find a correlation between statistics and salary
+    2. Visualized this correlation in various Tableau Sheets
+    3. Created a dashboard for future display
