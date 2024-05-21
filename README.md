@@ -8,8 +8,8 @@ It is currently a work in progress.
     1. Collected data from [BasketbalLR  ](https://www.basketball-reference.com/)
     2. Data included Player Bio Data, Teams, Contract Values, and Performance Metrics
     
-2.Data Cleaning:
+2. Data Cleaning:
     1. Merged all data sets to create a comprehensive data set
-      1. See CombinedNBAStatsSalaries.xlsx
+        1. See CombinedNBAStatsSalaries.xlsx
     2. Removed empty NaN values and inconsistencies
-3. Preliminary Analysis:
+4. Preliminary Analysis:
