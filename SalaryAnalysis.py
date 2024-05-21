@@ -25,6 +25,8 @@ class NBASalaryPredictor:
         self.predictions = {}
         self.metrics = {}
 
+# trains the models using a standard scalar, loop through self.models in order to get values of each and then agregates them
+
     def train_models(self):
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(self.X)
@@ -33,6 +35,8 @@ class NBASalaryPredictor:
             model.fit(X_scaled, self.y)
             self.predictions[name] = model.predict(X_scaled)
         self.predictions['Average'] = np.mean(list(self.predictions.values()), axis=0)
+
+# evaluates using the mse, rmse, mae, r2 metrics and returns them
 
     def evaluate_models(self):
         for name, preds in self.predictions.items():
@@ -43,6 +47,8 @@ class NBASalaryPredictor:
             self.metrics[name] = {
                 'MSE': mse, 'RMSE': rmse, 'MAE': mae, 'R²': r2
             }
+
+# Creates a bar graph of the which features are used as priortiy in the random forest regresser
 
     def show_stat_importance(self):
         rf_model = self.models['RandomForest']
@@ -57,6 +63,8 @@ class NBASalaryPredictor:
         plt.tight_layout()
         plt.show()
 
+# shows the actual salaries and the predicted salaries in a scatter plot
+
     def show_predictions(self):
         plt.figure(figsize=(10, 6))
         for name, preds in self.predictions.items():
@@ -68,6 +76,8 @@ class NBASalaryPredictor:
         plt.legend()
         plt.show()
 
+# showvases the variance of the predicted to the actual in histogram form
+
     def show_errors(self):
         plt.figure(figsize=(10, 6))
         for name, preds in self.predictions.items():
@@ -78,10 +88,14 @@ class NBASalaryPredictor:
         plt.legend()
         plt.show()
 
+# creates an excel file with the stored data
+
     def save_predictions(self, output_filepath):
         for name, preds in self.predictions.items():
             self.data[f'{name}_Predicted_Salary'] = preds
         self.data.to_excel(output_filepath, index=False)
+
+# prints the used metrics out 
 
     def print_metrics(self):
         for name, metric in self.metrics.items():
@@ -90,11 +104,11 @@ class NBASalaryPredictor:
                 print(f"{key}: {value}")
 
 # Usage
-predictor = NBASalaryPredictor('D:\\VSCODE\\Nba Salary Analysis\\CombinedNBAStatsSalaries.xlsx')
-predictor.train_models()
-predictor.evaluate_models()
-predictor.show_stat_importance()
-predictor.show_predictions()
-predictor.show_errors()
-predictor.save_predictions('1predicted_salaries_with_three_models&avg.xlsx')
-predictor.print_metrics()
+#predictor = NBASalaryPredictor('D:\\VSCODE\\Nba Salary Analysis\\CombinedNBAStatsSalaries.xlsx')
+#predictor.train_models()
+#predictor.evaluate_models()
+#predictor.show_stat_importance()
+#predictor.show_predictions()
+#predictor.show_errors()
+#predictor.save_predictions('1predicted_salaries_with_three_models&avg.xlsx')
+#predictor.print_metrics()
