@@ -4,12 +4,12 @@ It is currently a work in progress.
 
 **Completed:**
 
-1. Data Collection: *Collected data from [BasketbalLR  ](https://www.basketball-reference.com/)
-
-b. Data included Player Bio Data, Teams, Contract Values, and Performance Metrics
+1. Data Collection:
+2.     Collected data from [BasketbalLR  ](https://www.basketball-reference.com/)
+3.     Data included Player Bio Data, Teams, Contract Values, and Performance Metrics
     
-  3. Data Cleaning:
+  4. Data Cleaning:
     a. Merged all data sets to create a comprehensive data set
       i. See CombinedNBAStatsSalaries.xlsx
     b. Removed empty NaN values and inconsistencies
-  4. Preliminary Analysis:
+  5. Preliminary Analysis:
