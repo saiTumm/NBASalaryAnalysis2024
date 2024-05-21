@@ -4,8 +4,7 @@ It is currently a work in progress.
 
 **Completed:**
 
-  1. Data Collection:
-     
+1. Data Collection:     
   a. Collected data from [BasketbalLR  ](https://www.basketball-reference.com/)
   b. Data included Player Bio Data, Teams, Contract Values, and Performance Metrics
     
