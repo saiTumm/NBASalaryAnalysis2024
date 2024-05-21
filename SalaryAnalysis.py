@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
+from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -11,9 +12,9 @@ class NBASalaryPredictor:
     def __init__(self, filepath):
         self.data = pd.read_excel(filepath)
         self.stat = ['Age', 'G', 'GS', 'MP', 'FG', 'FGA', 'FG%', '3P', '3PA', '3P%', '2P', '2PA', '2P%', 'eFG%',
-                         'FT', 'FTA', 'FT%', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS',
-                         'PER', 'TS%', '3PAr', 'FTr', 'ORB%', 'DRB%', 'TRB%', 'AST%', 'STL%', 'BLK%', 'TOV%',
-                         'USG%', 'OWS', 'DWS', 'WS', 'WS/48', 'OBPM', 'DBPM', 'BPM', 'VORP']
+                     'FT', 'FTA', 'FT%', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS',
+                     'PER', 'TS%', '3PAr', 'FTr', 'ORB%', 'DRB%', 'TRB%', 'AST%', 'STL%', 'BLK%', 'TOV%',
+                     'USG%', 'OWS', 'DWS', 'WS', 'WS/48', 'OBPM', 'DBPM', 'BPM', 'VORP']
         self.X = self.data[self.stat]
         self.y = self.data['Salaries']
         self.models = {
@@ -25,9 +26,12 @@ class NBASalaryPredictor:
         self.metrics = {}
 
     def train_models(self):
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(self.X)
+        
         for name, model in self.models.items():
-            model.fit(self.X, self.y)
-            self.predictions[name] = model.predict(self.X)
+            model.fit(X_scaled, self.y)
+            self.predictions[name] = model.predict(X_scaled)
         self.predictions['Average'] = np.mean(list(self.predictions.values()), axis=0)
 
     def evaluate_models(self):
